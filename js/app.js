@@ -52,3 +52,18 @@
 // Scroll to section on link click
 
 // Set sections as active
+let sects = document.getElementsByTagName("section");
+let navUl = document.getElementById("navbar__list");
+let fragment = document.createDocumentFragment()
+for (let sect of sects){
+    let list = document.createElement("li");
+    list.innerHTML = `<a href="#${sect.id}" class="menu__link">${sect.dataset.nav}</a>`;
+    fragment.appendChild(list);
+}
+navUl.appendChild(fragment);
+navUl.addEventListener("click", (click) => {
+    click.preventDefault();
+    let sectId = click.target.getAttribute("href");
+    let scrollToSect = document.querySelector(sectId)
+    scrollToSect.scrollIntoView({behavior: "smooth"});
+})
