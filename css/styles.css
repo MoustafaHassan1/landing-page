@@ -223,6 +223,14 @@ section.active .landing__container::after {
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
 
+a.active {
+    background: linear-gradient(
+        0deg,
+        rgba(223, 8, 8, 0.637) 0%,
+        rgba(8, 212, 42, 0.301) 100%
+    );
+    font-weight: bold;
+}
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
     from {

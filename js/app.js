@@ -17,7 +17,7 @@ navUl.appendChild(fragment);
 navUl.addEventListener("click", (click) => {
     // prevent defult anchor behavior
     click.preventDefault();
-    // get sect id
+    // get sect id from anchor href attribute
     let sectId = click.target.getAttribute("href");
     let scrollToSect = document.querySelector(sectId)
     // make it scroll to sect
@@ -44,9 +44,13 @@ document.addEventListener("scroll", () => {
     for (let sect of sects){
         if(isVisible(sect)){
             sect.classList.add("active");
+            let anchor = navUl.querySelector(`[href="#${sect.id}"]`);
+            anchor.classList.add("active");
         }
         else{
             sect.classList.remove("active");
+            let anchor = navUl.querySelector(`[href="#${sect.id}"]`);
+            anchor.classList.remove("active");
         }
     }
 });
