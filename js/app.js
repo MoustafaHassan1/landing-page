@@ -20,8 +20,11 @@ navUl.addEventListener("click", (click) => {
     // get sect id from anchor href attribute
     let sectId = click.target.getAttribute("href");
     let scrollToSect = document.querySelector(sectId)
-    // make it scroll to sect
-    scrollToSect.scrollIntoView({behavior: "smooth"});
+    // check if element exists and make it scroll to sect
+    if (scrollToSect != null){
+        scrollToSect.scrollIntoView({behavior: "smooth"});
+    }
+    
 });
 // function that returns true or false debending if element is in viewport
 function isVisible(ele){
@@ -31,7 +34,7 @@ function isVisible(ele){
     let viewportHeight = window.innerHeight;
     let viewportWidth = window.innerWidth;
     // check if in viewport
-    if (location.top >= 0 && location.left >= 0 && location.bottom <= viewportHeight && location.right <= viewportWidth){
+    if (location.top >= 0 && location.left >= 0 && location.bottom + location.top <= viewportHeight && location.right <= viewportWidth){
         return true;
     }
     else{
@@ -40,9 +43,9 @@ function isVisible(ele){
 }
 // on scroll check for new active sect
 document.addEventListener("scroll", () => {
-    // if sect in viewport make active and deactivate the rest
+    // if sect header in viewport make active and deactivate the rest
     for (let sect of sects){
-        if(isVisible(sect)){
+        if(isVisible(sect.querySelector("h2"))){
             sect.classList.add("active");
             let anchor = navUl.querySelector(`[href="#${sect.id}"]`);
             anchor.classList.add("active");
