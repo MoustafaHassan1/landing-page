@@ -223,7 +223,7 @@ section.active .landing__container::after {
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
 
-a.active {
+.navbar__menu a.active.menu__link {
     background: linear-gradient(
         0deg,
         rgba(223, 8, 8, 0.637) 0%,
